@@ -1,3 +1,6 @@
+import discord
+import time
+
 class Clock:
     def __init__(self):
         self.mins = 0
@@ -19,4 +22,3 @@ class Clock:
         self.mins = total_sec // 60
         self.secs = total_sec % 60
         return '{:02d}:{:02d}'.format(self.mins, self.secs)
-
