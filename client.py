@@ -4,8 +4,6 @@ import os
 from discord.colour import Colour
 from clock import Clock
 
-
-
 client = discord.Client()
 
 @client.event
@@ -20,7 +18,7 @@ async def on_message(message):
     global pause
     global stop
     global seconds
-    
+
     style = discord.Embed(
         title = 'Panda Pomodoro session has started!',
         colour = discord.Colour.teal(),
@@ -48,6 +46,8 @@ async def on_message(message):
         
     if message.content.startswith('-set'):
         await message.channel.send(embed = style)
+        
+    if message.content.startswith('-set'):
         total_sec = int(message.content.split(' ')[1])*60
         seconds = total_sec
         await message.channel.send('Your time has been set to ' + str(total_sec//60) + ' minutes. Happy Studying!')
@@ -69,7 +69,6 @@ async def on_message(message):
             total_sec-=1
             await timeR_msg.edit(content='Time remaining: ' + clock.desc(total_sec))
             
-    
     if message.content.startswith('-p'):
         pause = True
         total_sec = seconds
@@ -88,7 +87,6 @@ async def on_message(message):
 # -p only pauses once and uses that time for all future resumes
 # -r can be used while session is already in place
         
-
 
 
 # running the bot with token
